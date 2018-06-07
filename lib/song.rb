@@ -31,18 +31,25 @@ class Song
   end
 
   def self.genre_count
-    i = 0
     genre_hash = {}
-    # i need to take the genre for each song initialized and add one to the tally of songs in that genre each time.
-    #so i need to count the number of repeating elements in an array
     @@genres.each do |genre|
       if genre_hash[genre]
-        genre_hash[genre] = i + 1
-        i += 1
-
+        genre_hash[genre] += 1
+      else genre_hash[genre] = 1
+      end
     end
     genre_hash
+  end
 
+  def self.artist_count
+    artist_hash = {}
+    @@artists.each do |artist|
+      if artist_hash[artist]
+        artist_hash[artist] += 1
+      else artist_hash[artist] = 1
+      end
+    end
+    artist_hash
   end
 
 lucifer = Song.new("Lucifer", "Jay-Z", "rap")
